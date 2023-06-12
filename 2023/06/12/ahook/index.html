@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="2023实习日记, 前端 JavaScript 碳苯 Serio Web 计算机 Carbon 框架 微前端 大厂 furry 福瑞 程序员 IT">
-    <meta name="description" content="我，回来了">
+    <meta name="keywords" content="AHook学习【更新中】, 前端 JavaScript 碳苯 Serio Web 计算机 Carbon 框架 微前端 大厂 furry 福瑞 程序员 IT">
+    <meta name="description" content="React的大师之剑">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>2023实习日记 | 碳苯</title>
+    <title>AHook学习【更新中】 | 碳苯</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -324,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/postimages/58.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/postimages/59.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">2023实习日记</h1>
+                    <h1 class="description center-align post-title">AHook学习【更新中】</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%9D%82%E8%AE%B0/">
-                                <span class="chip bg-color">杂记</span>
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
                             </a>
                         
                     </div>
@@ -457,8 +457,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                随笔
+                            <a href="/categories/web/" class="post-category">
+                                web
                             </a>
                         
                     </div>
@@ -470,21 +470,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-21
+                    2023-06-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-05-29
+                    2023-06-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    706
                 </div>
                 
 
@@ -509,50 +509,85 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><blockquote>
-<p>前传：<a target="_blank" rel="noopener" href="https://serio.gitee.io/2022/06/23/diariesofbytedancer/">2022实习日记</a></p>
-<p>首次落笔于 2023/02/21 2:25 AM，重庆</p>
-<p>由于多方面的原因，很久没有更新博客了，但是随着阅历的增多，恍惚回首发现无数宝贵的时光竟然无可追忆，那些和朋友们一起欢笑、一起奋斗的岁月要是沉没在时间的长河中，将会是令人无比遗憾的损失！</p>
-<p>所以我又开始写博客，记录下这些日常的点滴，使得多年之后的某一天夜里，工作了一整天疲惫不堪的我偶然回顾这些文字时，苍老的心里能再次出现那些曾使自己潸然泪下的人物和故事。</p>
-<p>也谨以此篇奉劝读者，珍惜当下的时光，重视眼前的人物。</p>
+                <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本文将介绍开源库<code>ahook</code>中部分常用的API的底层实现原理。</p>
+<p>介绍的方式是，提出应用场景和用法作为<strong>需求</strong>，然后希望读者先思考如何实现，再看源码验证答案。</p>
+<p>另外，<strong>为了代码更加直观易懂，会尽可能省略不必要的TS等内容</strong>。</p>
+<h3 id="多余的话"><a href="#多余的话" class="headerlink" title="多余的话"></a>多余的话</h3><p>很久没有写技术博客了。</p>
+<p>据上一次写技术笔记，已经过去了将近一年了，这一年里，我获得了前所未有的成长，见到了不可思议的技术，还有超凡入圣的技术大师。</p>
+<p>我的经历大概是这样的，说实话做到这一步我感觉非常满意了，真的，对我而言非常不容易：</p>
+<blockquote>
+<p>LEC团队 (2020.10-2022.4)<br>教授的硬件设备公司 (2022.4-2022.5)<br>字节跳动-互娱研发(抖音) (2022.6-2022.10)<br>字节跳动-懂车帝 (2023.1-2023.5)<br>阿里巴巴-淘天集团 (2023.6-至今)</p>
 </blockquote>
-<h2 id="归去来"><a href="#归去来" class="headerlink" title="归去来"></a>归去来</h2><h3 id="云中行"><a href="#云中行" class="headerlink" title="云中行"></a>云中行</h3><p>我在地铁上盯着进进出出的人群，目的地越来越近，我的眼眶也越来越湿润。</p>
-<p>过去的四个月里，我和其他勇士们相互吸引进而有幸相识。外人看我们都说“一骑绝尘”、“登峰造极”之类，然而只有我们自己才知道自己的处境多么尴尬，既上不去又下不来，也没法横向发展——技术上有一定的优势，但短时间内又难以达到一个业内的及格水平，而且又因为自己的心理预期难以放下追求卓越的想法，并且分身乏术还难以在其他方面发展。</p>
-<p>只有我们才知道这一身袍里藏着多少虱子，这是没法和其他人诉说的，因为他们都会觉得这是一种凡尔赛的说法，就像是“对面壁者的笑”。</p>
-<p>所以当一群有相同处境的人聚到一块时，才是第一次知道“相逢何必曾相识”是什么意思。</p>
-<p>“回去吗？”</p>
-<p>大学后，我一度追求金钱，倒也不是因为非常缺少，是我认为没有经济基础决定上层建筑，没有金钱谈何幸福，谈何成功啊？我心底曾暗自以为那些贬低金钱地位的人多少是被虚无缥缈的浪漫主义冲昏了头脑。直到今天我又想起一个被我们视为无比成功的人所说的话是什么意思，“钱是挣不完的”。</p>
-<p>我手里攥着一张明信片，红色的厚纸片上四个金印的大字：“一帆风顺”。这是我在飞机上时，乘务选中我希望让我写一段乘机体验评价，因为写的内容较为独特而给我的纪念品。</p>
-<p>我翻了翻过往的评价，无非十几字敷衍收尾，我也本想如此，但是当我拿起笔时写字我才意识到自己已经不再习惯用笔书写了，不禁回顾起高中时的光景。</p>
-<p>那时的自己，想过有一天会只身一人到举目无亲的城市，为了要交房租的今天和那个遥远的明天而硬着头皮像一个机器一样麻木地工作吗？想过一路走来陪自己嬉闹说笑共同，就算是沉重的压力下也陪自己苦中作乐地那群人，有朝一日突然就从自己的身边消失了，一下子就只有自己默默抗下一切吗？</p>
-<p>“我想尽力把字写好，但是终究是做不到了。虽然这可能很丢人，但是我还是按捺不住想表达我的内心…1600千米，不是飞行的路程，而是我的思念的距离。”</p>
-<h3 id="墙里墙外"><a href="#墙里墙外" class="headerlink" title="墙里墙外"></a>墙里墙外</h3><p>我隔着校门的铁围栏，目送两位朋友带着我一路带过来的一个行李箱加上两个背包的行李远去，独留我一人在校外凄然神伤。疫情给社会带来了巨大的损失，那个时代的空气里总是充满一种迷茫和淡淡的哀伤，学校对于疫情的态度自然是慎之又慎，所以纵使我当时已经满足了地方的要求，但是仍然不被允许进入校园，非得再要之后连续七天的检测报告。</p>
-<p>无奈只好先下榻学校对面的旅馆。</p>
-<p>前台接待头发花白，瘦削的面庞配上细框眼镜，身上又是大衣内就着白衬衫，俨然一副退休老干部形象。只是眨几下眼的功夫，这道貌岸然的老江湖便看出我是风尘仆仆一路奔波，现在早已是疲惫不堪了，眉开眼笑，嘴角一咧：</p>
-<p>“二楼100一天，四楼50一天。”</p>
-<p>我心里一惊，好一个趁火打劫！我岂能正中他下怀，咬咬牙，抬着自己没交给朋友的一个行李箱，一声不吭地上了四楼。</p>
-<p>我从四楼的窗外望着围墙内的楼宇，灯影摇晃。是谁彻夜难眠，为一个难以实现的逻辑而连续作业超过37小时？又是谁夜不能寐，只为了四个即将截止的比赛项目而五天没回过寝室？此时此刻，是否也有人曾像我过去那样，为了给自己，为了给团队争口气而如此做如此不值得的拼命呢？诚然我曾因此获得更多，但是也失去了更多。</p>
-<p>或许我能够弥补。</p>
-<p>第二天我又将两个朋友约到校门口将剩下的一箱行李交付，然后独自一人花了一整天时间在校外转悠。</p>
-<p>墙外便多了一重心事。</p>
-<h3 id="一声愁绝"><a href="#一声愁绝" class="headerlink" title="一声愁绝"></a>一声愁绝</h3><p>紫黑的云边微微显露出月亮明晃晃的一角。</p>
-<p>一声犬吠从远处看不见的黑暗中传来，我面前草丛随即发出窸窸窣窣的响动，两个人影在其中若隐若现。</p>
-<p>见到我靠近，他们开始招手，尽力压低声音向我说道：</p>
-<p>“几个月不见，身手竟然变得如此灵活！”</p>
-<p>我笑而不语，示意他们赶紧带我回去。一路上我们谁也没有再开口，只任由犬吠声渐远。</p>
-<p>我想说些什么，但是我此时的心灵是如此苍老，也再没有力气开口。</p>
-<p>莫名想起六七年前在香港遇到的那个孩子，第一次见到他时，阳光正从海的边缘升起，街道长椅边的白鸽在微光中飞起，这一眼的惊艳，让我回味多年。</p>
-<p>但谁能想象那个曾经眼里泛着光的，因为对美学的追求而漂洋过海来到意大利的孩子，和如今左搂右抱，游走在灯红酒绿之中放浪形骸的竟是同一个人呢？</p>
-<p>夜晚的砂地上泛着白光，一阵微寒的风渐渐卷起，拂过小径两侧的荒草，周围的雾气也随之流转起来，清冷的光辉在其间变幻。至少有那么一瞬间，我们大概是真的成为了大漠孤烟的澄澄夜风中行走的旅人，满身风尘，纵然迷惘却还是蹒跚着前行。</p>
-<p>如果人间真没有那所谓的异样的神明，那我曾怎样离去，又曾怎样归来，便再没有人会知晓了。</p>
-<h3 id="浊酒春风"><a href="#浊酒春风" class="headerlink" title="浊酒春风"></a>浊酒春风</h3><p>直到这时我才知道，所谓的世界就是人与人之间的连接构成的。</p>
-<p>“朝菌不知晦朔，蟪蛄不知春秋 ”，我曾以为这只是寓言，后知后觉这原来是对我自己的写照。</p>
-<p>宇宙宽广，历史深长，而人生不过天地方寸之间，岁月光阴长不过百载年华！能有多少时日，又能有几个春秋去看破红尘！每个人都可以在自己的世界里看见荒原上有羊群，看见沙漠里绿草如茵飘飞雪雨，看见山峰的云飘入最深的海底，丰富又贫瘠。</p>
-<p>天外一星焰闪，火光流动。是我的世界里不曾有过的景色，那是我们四目相对时独有的光。</p>
-<p>我面前的这个人的名声我倒是早有耳闻，但真正接触时才惊觉其造诣颇深远超于我。</p>
-<p>昨日不识池中龙，今日方知天外天。</p>
-<p>彻夜无眠，相谈甚欢。</p>
-<h2 id="明月青山"><a href="#明月青山" class="headerlink" title="明月青山"></a>明月青山</h2><h3 id="秋千索"><a href="#秋千索" class="headerlink" title="秋千索"></a>秋千索</h3>
+<p>但就算如此，我也总是在耳畔听到一个声音：</p>
+<blockquote>
+<p>“就这样而已吗？”</p>
+</blockquote>
+<p>我想要成为JS Master，我不想止步于此，总有一天——十年也好，二十年也好，我一定要实现我的梦想。</p>
+<p>综合业务实用性和技术成长性两个方面考虑，我决定从React的Hook封装开始深挖，通过学习AHook这个前人铸造的丰碑获得成长。</p>
+<h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>感谢阿里巴巴的开源库<code>ahook</code>: <a target="_blank" rel="noopener" href="https://github.com/alibaba/hooks%E3%80%82">https://github.com/alibaba/hooks。</a></p>
+<p>这一年非常感谢心圆、洋仔、鸡哥等开源大佬对我在技术上的激励。</p>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>我们从状态相关的库开始学习。</p>
+<h3 id="useToggle"><a href="#useToggle" class="headerlink" title="useToggle"></a>useToggle</h3><h4 id="需求介绍"><a href="#需求介绍" class="headerlink" title="需求介绍"></a>需求介绍</h4><blockquote>
+<p>用于在两个状态值间切换的 Hook。</p>
+</blockquote>
+<p>乍一听非常简单，但是需要注意，这可没说一定是布尔值。</p>
+<p>让我们先给出一些基本的代码这样更容易理解我们要做些什么：</p>
+<pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token comment">// 注意，两个参数都是可选的</span>
+<span class="token keyword">interface</span> <span class="token class-name">UseToggleProps</span> <span class="token punctuation">{</span>
+ 	leftValue<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">,</span>
+ 	rightValue<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">useToggle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">leftValue<span class="token punctuation">,</span> rightValue</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>leftValue<span class="token punctuation">)</span> 
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token function">useMemo</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    	<span class="token comment">// ... TODO: 在这里补全代码</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            set<span class="token punctuation">,</span>   		<span class="token comment">// 设置 state</span>
+            toggle<span class="token punctuation">,</span>		<span class="token comment">// 反转 state</span>
+            setLeft<span class="token punctuation">,</span> 	<span class="token comment">// 设置state为 leftValue</span>
+            setRight<span class="token punctuation">,</span>	<span class="token comment">// 设置state为 rightValue ?? !leftValue</span>
+    	<span class="token punctuation">}</span>    
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+	
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>也就是实现四个函数， 让我们从简单的开始由上往下进行实现：</p>
+<pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">useToggle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">leftValue<span class="token punctuation">,</span> rightValue</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>leftValue<span class="token punctuation">)</span> 
+    <span class="token keyword">const</span> action<span class="token operator">:</span> Action <span class="token operator">=</span> <span class="token function">useMemo</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  	<span class="token comment">// --- 下面是补全的代码 --- </span>
+        <span class="token keyword">const</span> <span class="token function-variable function">set</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token function">setState</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">}</span> 
+        <span class="token keyword">const</span> <span class="token function-variable function">setLeft</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token function">setState</span><span class="token punctuation">(</span>leftValue<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 由于rightValue参数可选，所以并不一定存在右值，需要我们自行对左值取反</span>
+        <span class="token keyword">const</span> revLeftValue <span class="token operator">=</span> rightValue <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token operator">!</span>leftValue <span class="token operator">:</span> rightValue
+        
+        <span class="token keyword">const</span> <span class="token function-variable function">setRight</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token function">setState</span><span class="token punctuation">(</span>rightValue<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> <span class="token function-variable function">toggle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>  
+        	<span class="token keyword">const</span> newValue <span class="token operator">=</span> state <span class="token operator">===</span> leftValue <span class="token operator">?</span> revLeftValue <span class="token operator">:</span> leftValue  
+        	<span class="token function">setState</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span>	
+        <span class="token punctuation">}</span>
+    <span class="token comment">// --- 上面是补全的代码 ---</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            setLeft<span class="token punctuation">,</span>
+            setRight<span class="token punctuation">,</span>
+            set<span class="token punctuation">,</span>
+            toggle<span class="token punctuation">,</span>
+    	<span class="token punctuation">}</span>    
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+	
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实际上也并不难对吧——甚至有些简单？</p>
+<h3 id="useDebounce"><a href="#useDebounce" class="headerlink" title="useDebounce"></a>useDebounce</h3><h3 id="useThrottle"><a href="#useThrottle" class="headerlink" title="useThrottle"></a>useThrottle</h3><h3 id="usePrevious"><a href="#usePrevious" class="headerlink" title="usePrevious"></a>usePrevious</h3><h3 id="useRafState"><a href="#useRafState" class="headerlink" title="useRafState"></a>useRafState</h3><h3 id="useGetState"><a href="#useGetState" class="headerlink" title="useGetState"></a>useGetState</h3><h3 id="useUrlState"><a href="#useUrlState" class="headerlink" title="useUrlState"></a>useUrlState</h3><h2 id="Effect"><a href="#Effect" class="headerlink" title="Effect"></a>Effect</h2>
                 
             </div>
             <hr/>
@@ -578,7 +613,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coderserio.github.io/2023/02/21/diariesofbytedancer2/">https://coderserio.github.io/2023/02/21/diariesofbytedancer2/</a>
+                    <a href="https://coderserio.github.io/2023/06/12/ahook/">https://coderserio.github.io/2023/06/12/ahook/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -616,8 +651,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%9D%82%E8%AE%B0/">
-                                    <span class="chip bg-color">杂记</span>
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
                                 </a>
                             
                         </div>
@@ -811,9 +846,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/06/12/ahook/">
                     <div class="card-image">
@@ -830,9 +866,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -845,6 +881,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -863,30 +900,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/20/websocket/">
+                <a href="/2023/02/21/diariesofbytedancer2/">
                     <div class="card-image">
                         
-                        <img src="/medias/postimages/52.jpg" class="responsive-img" alt="WebSocket">
+                        <img src="/medias/postimages/58.png" class="responsive-img" alt="2023实习日记">
                         
-                        <span class="card-title">WebSocket</span>
+                        <span class="card-title">2023实习日记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            你难道不渴望一段双向奔赴的通信？
+                            我，回来了
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web/" class="post-category">
-                                    web
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
                                 </a>
                             
                             
@@ -896,8 +933,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
+                    <a href="/tags/%E6%9D%82%E8%AE%B0/">
+                        <span class="chip bg-color">杂记</span>
                     </a>
                     
                 </div>
