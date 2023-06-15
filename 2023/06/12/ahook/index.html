@@ -477,14 +477,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-13
+                    2023-06-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    744
+                    938
                 </div>
                 
 
@@ -527,8 +527,33 @@
 <h3 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h3><p>感谢阿里巴巴的开源库<code>ahook</code>: <a target="_blank" rel="noopener" href="https://github.com/alibaba/hooks%E3%80%82">https://github.com/alibaba/hooks。</a></p>
 <p>这一年非常感谢心圆、洋仔、鸡哥等开源大佬对我在技术上的激励。</p>
 <h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>我们从状态相关的库开始学习。</p>
-<h3 id="useToggle"><a href="#useToggle" class="headerlink" title="useToggle"></a>useToggle</h3><h4 id="需求介绍"><a href="#需求介绍" class="headerlink" title="需求介绍"></a>需求介绍</h4><blockquote>
-<p>用于在两个状态值间切换的 Hook。</p>
+<h3 id="useLatest"><a href="#useLatest" class="headerlink" title="useLatest"></a>useLatest</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><blockquote>
+<p>总是返回当前最新值的 Hook！可以避免闭包问题！</p>
+</blockquote>
+<p>还是不太清楚具体是干什么的？那来看看下面这个场景：</p>
+<pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>cnt<span class="token punctuation">,</span> setCnt<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">setCnt</span><span class="token punctuation">(</span>cnt <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">cnt: </span><span class="token punctuation">{</span>cnt<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里渲染的<code>cnt</code>最终会卡在1。</p>
+<blockquote>
+<p>我个人的理解是函数组件内的定时器把回调递出去挂到了计时线程上，内存泄漏形成了闭包，这时候的<code>cnt</code>还是0——由于只有首次渲染的时候才会设置定时器，所以之后每次触发都是获取到值为0的<code>cnt</code>，也就导致渲染的结果卡在1。</p>
+</blockquote>
+<p>这时，我们就可以使用<code>useLatest</code>。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><h3 id="useToggle"><a href="#useToggle" class="headerlink" title="useToggle"></a>useToggle</h3><h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><blockquote>
+<p>实现一个用于在两个状态值间切换的 Hook！</p>
 </blockquote>
 <p>乍一听非常简单，但是需要注意，这可没说一定是布尔值。</p>
 <p>让我们先给出一些基本的代码这样更容易理解我们要做些什么：</p>
@@ -558,7 +583,7 @@
 
 
 
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>也就是实现四个函数， 让我们从简单的开始由上往下进行实现：</p>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><p>也就是实现四个函数， 让我们从简单的开始由上往下进行实现：</p>
 <pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">useToggle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">leftValue<span class="token punctuation">,</span> rightValue</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>leftValue<span class="token punctuation">)</span> 
     <span class="token keyword">const</span> action<span class="token operator">:</span> Action <span class="token operator">=</span> <span class="token function">useMemo</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
